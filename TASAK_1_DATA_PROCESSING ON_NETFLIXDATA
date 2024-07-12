@@ -1,0 +1,54 @@
+import pandas as pd
+from sklearn.preprocessing import LabelEncoder, StandardScaler
+import nltk
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+
+filepath ='C:/Users/hp/OneDrive/Documents/netflixData.csv'                                       #THIS IS TO TAKE THE OR FETCH THE FILE FROFM THE PERTICULAR AREA IN THE MEMORY
+data = pd.read_csv(filepath)
+
+print("Initial dataset loaded:")
+print(data.head())
+
+
+data.columns = data.columns.str.strip()                                                         #cleaning the column names by stripping
+
+data['Show Id'] = data['Show Id'].str.replace(',', '').str.strip().astype(str)                  # Clean the 'Show Id' column by removing commas and stripping spaces
+
+data['Release Date'] = pd.to_datetime(data['Release Date'])
+
+# Drop redundant columns
+data.drop(columns=['Rating', 'Imdb Score', 'Content Type'], inplace=True)
+
+# Encode categorical variables
+label_encoders = {}
+for column in ['Director', 'Genres',  'Production Country', 'Description']:
+    le = LabelEncoder()
+    data[column] = le.fit_transform(data[column])
+    label_encoders[column] = le
+
+print("Categorical columns encoded:")
+print(data.head())
+
+
+# Example of using nltk to process text data in the 'director' column
+def preprocess_text(text):
+    if isinstance(text, str):
+        tokens = word_tokenize(text)
+        tokens = [word.lower() for word in tokens if word.isalpha()]
+        stop_words = set(stopwords.words('english'))
+        filtered_tokens = [word for word in tokens if word not in stop_words]
+        return ' '.join(filtered_tokens)
+    else:
+        return ''
+
+data['Director'] = data['Director'].apply(preprocess_text)
+
+print("Text data in 'Director' column processed:")
+print(data['Director'].head())
+
+# Save the processed dataset to a new CSV file
+processed_file_path = './Processed_Netflix_recommender.csv'
+data.to_csv(processed_file_path, index=False)
+print(f"Processed data saved to {processed_file_path}")
+
