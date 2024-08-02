@@ -21,4 +21,18 @@
 
 # Task - 2 : Model Evaluation and Comparison 
 
+# OVERVIEW OF THE TASK_2
+
+# Through this task I learned about the different types of functions and packages and their use in the process of MODEL EVALUATION AND COMPARISON.
+# In this particular Task I basically took two different AI models and compared them in terms of their precision , accuracy,F1 score.
+# For this I have used the pandas and sklearn packages and then I initialised the Two models and evaluated them as we normally do.
+# As the final step I compared the two models namely Random forest and SVM and checked for the outputs.
+
+# OUTPUT
+
+![TASK_2](https://github.com/user-attachments/assets/eedb0c21-ab41-4393-84a8-348895c3a1d4)
+
+
+
+# THANK YOU 
 
