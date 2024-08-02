@@ -11,7 +11,8 @@
 # On which the A.I models can work properly.
 # INPUT
 
- ![Screenshot 2024-08-03 023435](https://github.com/user-attachments/assets/ecbb46b0-d720-470d-9bdd-0e791e29fda0)
+ ![Screenshot 2024-08-03 023132](https://github.com/user-attachments/assets/be3f1556-5920-45b8-bd72-5726040fb830)
+
 
 # OUTPUT
 ![task_2_rs](https://github.com/user-attachments/assets/d7051773-253a-4f9d-bb6f-66c2ff8553b5)
